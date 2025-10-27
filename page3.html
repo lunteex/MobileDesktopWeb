@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Выберите язык</title>
+  <style>
+    :root {
+      --accent:#7b74d9;
+      --text:#111827;
+      --sub:#6b7280;
+      --border:#e6e6ee;
+      --bg:#fff;
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+    }
+
+    html,body {margin:0;padding:0;height:100%;background:var(--bg);color:var(--text);}
+    body {display:flex;flex-direction:column;align-items:center;}
+
+    main {
+      width:100%;
+      max-width:480px;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      box-sizing:border-box;
+      padding:20px 18px 70px;
+    }
+
+    .top-row {display:flex;align-items:center;gap:12px;}
+    .close {width:34px;height:34px;display:inline-grid;place-items:center;border:none;background:none;cursor:pointer;text-decoration:none;}
+    .title {font-weight:600;font-size:18px;}
+
+    ul.language-list {list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;}
+    ul.language-list li {display:flex;align-items:center;justify-content:space-between;padding:14px 10px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .2s;}
+    ul.language-list li:hover {background:#f9f9fb;}
+    ul.language-list a {text-decoration:none;color:inherit;display:flex;align-items:center;justify-content:space-between;width:100%;}
+
+    .arrow {width:18px;height:18px;}
+
+    /* для телефона */
+    nav.bottom-nav {position:fixed;bottom:0;left:0;right:0;border-top:1px solid var(--border);background:#fff;display:flex;justify-content:space-around;padding:8px 0;}
+    nav a {text-decoration:none;color:var(--sub);font-size:12px;display:flex;flex-direction:column;align-items:center;gap:4px;}
+    nav a.active {color:var(--accent);}
+
+    svg.icon {width:22px;height:22px;}
+
+    /* для декстопа */
+    @media (min-width:768px) {
+      body {
+        flex-direction:row;
+        align-items:flex-start;
+        height:100vh;
+      }
+      nav.bottom-nav {
+        position:fixed;
+        top:0;
+        left:0;
+        bottom:0;
+        width:200px;
+        border-top:none;
+        border-right:1px solid var(--border);
+        flex-direction:column;
+        justify-content:flex-start;
+        align-items:center;
+        padding-top:40px;
+        gap:24px;
+      }
+      nav.bottom-nav a {
+        font-size:14px;
+        flex-direction:column;
+        align-items:center;
+        color:var(--sub);
+      }
+      nav.bottom-nav a.active {color:var(--accent);}
+      main {
+        max-width:none;
+        margin-left:200px;
+        padding:40px;
+      }
+      .title {font-size:22px;}
+      ul.language-list li {padding:18px 14px;}
+    }
+  </style>
+</head>
+<body>
+  <nav class="bottom-nav">
+    <a href="page2.html">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-6 9 6v9a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Главная
+    </a>
+    <a href="page3.html" class="active">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M2 4h8v16H2zM14 4h8v16h-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Языки
+    </a>
+    <a href="practice.html">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M6 18h12M9 6h6l2 12H7l2-12zM10 2h4v2h-4V2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Практика
+    </a>
+    <a href="profile.html">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.418 0-8 2.239-8 5v3h16v-3c0-2.761-3.582-5-8-5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Профиль
+    </a>
+  </nav>
+
+  <main>
+    <div class="top-row">
+      <a href="page2.html" class="close" aria-label="Закрыть">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M6 18L18 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <h1 class="title">Выберите язык</h1>
+    </div>
+
+    <ul class="language-list">
+      <li><a href="practice.html">Испанский <svg class="arrow" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="practice.html">Английский <svg class="arrow" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="practice.html">Китайский <svg class="arrow" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="practice.html">Итальянский <svg class="arrow" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="practice.html">Русский <svg class="arrow" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="practice.html">Немецкий <svg class="arrow" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="practice.html">Португальский <svg class="arrow" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="practice.html">Японский <svg class="arrow" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="practice.html">Корейский <svg class="arrow" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="practice.html">Арабский <svg class="arrow" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="practice.html">Хинди <svg class="arrow" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="practice.html">Французский <svg class="arrow" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    </ul>
+  </main>
+</body>
+</html>

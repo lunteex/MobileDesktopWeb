@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Профиль</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <style>
+    :root{
+      --accent:#7b74d9;
+      --text:#111827;
+      --sub:#6b7280;
+      --border:#e6e6ee;
+      --bg:#fff;
+      --sidebar-w:200px;
+      font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;padding:0;background:var(--bg);color:var(--text)}
+
+    body{display:flex;flex-direction:column;align-items:center}
+
+    nav.sidebar{
+      display:none;
+    }
+
+    main{
+      width:100%;
+      max-width:480px;
+      margin:0 auto;
+      padding:20px 18px 90px;
+      min-height:100vh;
+      box-sizing:border-box;
+    }
+
+    .top-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .progress-info{font-size:14px;font-weight:600;color:var(--sub)}
+    .close-btn{background:none;border:none;cursor:pointer;padding:8px}
+
+    h2{font-size:22px;margin:18px 0 8px}
+    p.lead{margin:0 0 18px;color:var(--sub)}
+
+    .profile-header{
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .avatar{
+      width:100px;
+      height:100px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid var(--border);
+      margin-bottom:10px;
+    }
+
+    .username{font-size:20px;font-weight:700;margin:0}
+    .level{font-size:14px;color:var(--sub)}
+
+    .section-title{
+      font-size:18px;
+      font-weight:600;
+      margin:25px 0 15px 0;
+    }
+
+    .swiper {
+      width: 100%;
+      padding: 10px 0;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+    }
+
+    .language-item{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:12px 14px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      background:#fff;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .language-flag{
+      width:30px;
+      height:30px;
+      background:#e6e7ea;
+      border-radius:6px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:16px;
+      flex-shrink: 0;
+    }
+
+    .language-info{
+      flex:1;
+    }
+
+    .language-name{font-size:16px;font-weight:500}
+    .language-level{font-size:14px;color:var(--sub)}
+
+
+    .progress-item{
+      margin-bottom:25px;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .progress-label{font-size:16px;margin-bottom:5px}
+    .progress-bar{width:100%;height:8px;background:#e6e7ea;border-radius:999px;margin-top:5px;overflow:hidden}
+    .progress-fill{height:100%;background:var(--text);border-radius:999px}
+    .progress-percent{font-size:14px;color:var(--sub);margin-top:5px}
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      width: 32px;
+      height: 32px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--text);
+      opacity: 0.7;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-size: 14px;
+    }
+
+    .swiper-pagination-bullet {
+      background: var(--border);
+      opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--accent);
+    }
+
+    /* mobile*/
+    nav.bottom-nav{position:fixed;bottom:0;left:0;right:0;border-top:1px solid var(--border);background:#fff;display:flex;justify-content:space-around;padding:8px 0}
+    nav.bottom-nav a{display:flex;flex-direction:column;align-items:center;font-size:12px;color:var(--sub);text-decoration:none}
+    nav.bottom-nav a.active{color:var(--accent)}
+
+    svg.icon{width:22px;height:22px}
+
+    /* DESKTOP */
+    @media(min-width:768px){
+      body{flex-direction:row;align-items:stretch;height:100vh}
+
+      nav.sidebar{display:flex;position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);flex-direction:column;align-items:center;padding-top:40px;border-right:1px solid var(--border);background:var(--bg);gap:20px}
+      nav.sidebar a{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:var(--sub);font-size:14px}
+      nav.sidebar a.active{color:var(--accent)}
+
+      nav.bottom-nav{display:none}
+
+      main{max-width:none;margin-left:var(--sidebar-w);padding:32px 40px;min-height:100vh}
+
+      .top-row{align-items:flex-start}
+      .progress-info{order:1}
+      .close-container{order:2;margin-left:auto}
+
+      h2{font-size:28px}
+      .profile-header{margin-bottom:40px}
+      .avatar{width:150px;height:150px}
+      .username{font-size:28px}
+      .level{font-size:16px}
+
+      .section-title{font-size:24px;margin:40px 0 20px 0}
+
+      .language-item{
+        padding:16px 20px;
+        max-width: 360px;
+      }
+
+      .language-flag{width:40px;height:40px;font-size:20px}
+
+      .language-name{font-size:18px}
+      .language-level{font-size:16px}
+
+      .progress-section{margin-top:40px}
+      .progress-label{font-size:18px}
+      .progress-bar{height:12px}
+      .progress-percent{font-size:16px}
+
+      .swiper-slide {
+        width: 48% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="sidebar" aria-label="Навигация">
+    <a href="page2.html">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-6 9 6v9a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Главная
+    </a>
+    <a href="page3.html">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M2 4h8v16H2zM14 4h8v16h-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Языки
+    </a>
+    <a href="practice.html">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M6 18h12M9 6h6l2 12H7l2-12zM10 2h4v2h-4V2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Практика
+    </a>
+    <a href="profile.html" class="active">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.418 0-8 2.239-8 5v3h16v-3c0-2.761-3.582-5-8-5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Профиль
+    </a>
+  </nav>
+
+  <nav class="bottom-nav" aria-label="Нижняя навигация">
+    <a href="page2.html">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-6 9 6v9a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Главная
+    </a>
+    <a href="page3.html">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M2 4h8v16H2zM14 4h8v16h-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Языки
+    </a>
+    <a href="practice.html">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M6 18h12M9 6h6l2 12H7l2-12zM10 2h4v2h-4V2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Практика
+    </a>
+    <a href="profile.html" class="active">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.418 0-8 2.239-8 5v3h16v-3c0-2.761-3.582-5-8-5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Профиль
+    </a>
+  </nav>
+
+  <main>
+    <div class="top-row">
+      <div class="progress-info">Профиль</div>
+      <div class="close-container"><a href="page2.html" class="close-btn" aria-label="Назад"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+    </div>
+
+    <div class="profile-header">
+      <img src="Gibbon.jpg" alt="Аватар" class="avatar">
+      <h2 class="username">Димон</h2>
+      <p class="level">Начинающий</p>
+    </div>
+
+    <h2 class="section-title">Языки</h2>
+    <div class="swiper languages-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="language-item">
+            <div class="language-flag">🇪🇸</div>
+            <div class="language-info">
+              <div class="language-name">Испанский</div>
+              <div class="language-level">Уровень 1</div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="language-item">
+            <div class="language-flag">🇫🇷</div>
+            <div class="language-info">
+              <div class="language-name">Французский</div>
+              <div class="language-level">Уровень 2</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="progress-section">
+      <h2 class="section-title">Прогресс</h2>
+      <div class="swiper progress-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="progress-item">
+              <div class="progress-label">Испанский</div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width:60%"></div>
+              </div>
+              <div class="progress-percent">60%</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="progress-item">
+              <div class="progress-label">Французский</div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width:20%"></div>
+              </div>
+              <div class="progress-percent">20%</div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    new Swiper('.languages-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 16,
+      pagination: {
+        el: '.languages-swiper .swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.languages-swiper .swiper-button-next',
+        prevEl: '.languages-swiper .swiper-button-prev',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        }
+      }
+    });
+
+    new Swiper('.progress-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 16,
+      pagination: {
+        el: '.progress-swiper .swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.progress-swiper .swiper-button-next',
+        prevEl: '.progress-swiper .swiper-button-prev',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        }
+      }
+    });
+  </script>
+</body>
+</html>

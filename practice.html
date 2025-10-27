@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Практика</title>
+  <style>
+    :root {
+      --accent:#7b74d9;
+      --text:#111827;
+      --sub:#6b7280;
+      --border:#e6e6ee;
+      --bg:#fff;
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+    }
+
+    html,body {margin:0;padding:0;height:100%;background:var(--bg);color:var(--text);}
+    body {display:flex;flex-direction:column;align-items:center;}
+
+    main {width:100%;max-width:480px;flex:1;display:flex;flex-direction:column;box-sizing:border-box;padding:20px 18px 70px;}
+
+    .top-row {display:flex;align-items:center;gap:12px;}
+    .back {width:34px;height:34px;display:inline-grid;place-items:center;border:none;background:none;cursor:pointer;text-decoration:none;}
+    .title {font-weight:600;font-size:18px;flex:1;text-align:center;}
+
+    h2 {font-size:20px;margin:20px 0 10px;}
+
+    .task-list {list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
+    .task {display:flex;align-items:center;gap:14px;padding:12px;border-radius:10px;background:#f9f9fb;cursor:pointer;text-decoration:none;color:inherit;transition:background .2s;}
+    .task:hover {background:#f1f1f5;}
+    .icon-box {width:40px;height:40px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);}
+    .task-info {display:flex;flex-direction:column;}
+    .task-info span {font-weight:500;}
+    .task-info small {color:var(--sub);font-size:13px;}
+
+    nav.bottom-nav {position:fixed;bottom:0;left:0;right:0;border-top:1px solid var(--border);background:#fff;display:flex;justify-content:space-around;padding:8px 0;}
+    nav a {text-decoration:none;color:var(--sub);font-size:12px;display:flex;flex-direction:column;align-items:center;gap:4px;}
+    nav a.active {color:var(--accent);}
+
+    svg.icon {width:22px;height:22px;}
+
+    /* Desktop */
+    @media (min-width:768px) {
+      body {flex-direction:row;align-items:flex-start;height:100vh;}
+      nav.bottom-nav {position:fixed;top:0;left:0;bottom:0;width:200px;border-top:none;border-right:1px solid var(--border);flex-direction:column;justify-content:flex-start;align-items:center;padding-top:40px;gap:24px;}
+      nav.bottom-nav a {font-size:14px;flex-direction:column;align-items:center;color:var(--sub);}
+      nav.bottom-nav a.active {color:var(--accent);}
+      main {max-width:none;margin-left:200px;padding:40px;}
+      .title {font-size:22px;text-align:left;}
+    }
+  </style>
+</head>
+<body>
+  <nav class="bottom-nav">
+    <a href="page2.html">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-6 9 6v9a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Главная
+    </a>
+    <a href="page3.html">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M2 4h8v16H2zM14 4h8v16h-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Языки
+    </a>
+    <a href="practice.html" class="active">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M6 18h12M9 6h6l2 12H7l2-12zM10 2h4v2h-4V2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Практика
+    </a>
+    <a href="profile.html">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.418 0-8 2.239-8 5v3h16v-3c0-2.761-3.582-5-8-5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Профиль
+    </a>
+  </nav>
+
+  <main>
+    <div class="top-row">
+      <a href="page3.html" class="back" aria-label="Назад">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div class="title">Практика</div>
+    </div>
+
+    <h2>Английский</h2>
+    <ul class="task-list">
+      <li><a href="quiz.html" class="task"><div class="icon-box">❓</div><div class="task-info"><span>Викторина</span><small>10 минут</small></div></a></li>
+      <li><a href="#" class="task"><div class="icon-box">B</div><div class="task-info"><span>Заполните пробелы</span><small>15 минут</small></div></a></li>
+      <li><a href="#" class="task"><div class="icon-box">🎧</div><div class="task-info"><span>Аудирование</span><small>20 минут</small></div></a></li>
+    </ul>
+  </main>
+</body>
+</html>
